@@ -2,6 +2,9 @@ const { getCategoriasDB, addCategoriaDB, updateCategoriaDB,
     deleteCategoriaDB, getCategoriaPorCodigoDB } = require('../usecases/categoriaUseCases');
 
 const getCategorias = async (request, response) => {
+      // pegando o usuario que veio pelo next()
+      const usuario = request.usuario;
+      console.log('Usuario recebido no token: ' + JSON.stringify(usuario));
     await getCategoriasDB()
           .then(data => response.status(200).json(data))
           .catch(err => response.status(400).json({
